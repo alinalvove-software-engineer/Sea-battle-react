@@ -1,5 +1,8 @@
 .App {
   text-align: center;
+  padding: 20px;
+  min-height: 100vh;
+  background-color: #f0f0f0;
 }
 
 .App-logo {
@@ -35,4 +38,120 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.game {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.boards-container {
+  display: flex;
+  gap: 40px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.board-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.board {
+  display: grid;
+  grid-template-columns: repeat(10, 40px);
+  gap: 2px;
+  background-color: #2c3e50;
+  padding: 10px;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.cell {
+  width: 40px;
+  height: 40px;
+  font-size: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  background-color: #fff;
+  border-radius: 4px;
+  transition: all 0.2s;
+}
+
+.cell:hover:not(.hit):not(.miss):not(.blocked) {
+  background-color: #ecf0f1;
+  transform: scale(1.05);
+}
+
+.cell.ship {
+  background-color: #3498db;
+}
+
+.cell.hit {
+  background-color: #e74c3c;
+  animation: hit 0.5s ease-out;
+}
+
+.cell.miss {
+  background-color: #95a5a6;
+  animation: miss 0.5s ease-out;
+}
+
+.cell.blocked {
+  background-color: #ecf0f1;
+  color: #95a5a6;
+  font-size: 16px;
+}
+
+.turn-indicator {
+  background-color: #fff;
+  padding: 10px 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin: 10px 0;
+}
+
+.turn-indicator h2 {
+  margin: 0;
+  color: #2c3e50;
+}
+
+h1 {
+  color: #2c3e50;
+  margin-bottom: 20px;
+}
+
+h2 {
+  color: #2c3e50;
+  margin: 0;
+  font-size: 1.5rem;
+}
+
+.victory-message {
+  color: #27ae60;
+  animation: victory 1s ease-in-out infinite;
+}
+
+@keyframes victory {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+  100% { transform: scale(1); }
+}
+
+@keyframes hit {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.2); }
+  100% { transform: scale(1); }
+}
+
+@keyframes miss {
+  0% { transform: scale(1); }
+  50% { transform: scale(0.9); }
+  100% { transform: scale(1); }
 }
